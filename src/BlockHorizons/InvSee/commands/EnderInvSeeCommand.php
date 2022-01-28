@@ -13,7 +13,7 @@ use pocketmine\utils\TextFormat;
 final class EnderInvSeeCommand extends BaseCommand{
 
 	public function __construct(Loader $loader, string $label, array $aliases = []){
-		parent::__construct($loader, $label, "View a player's ender inventory.", "/{$label} <player>", $aliases);
+		parent::__construct($loader, $label, "Sieh dir das Ender-Inventar eines Spielers an.", "/{$label} <player>", $aliases);
 	}
 
 	protected function initCommand() : void{
@@ -26,7 +26,7 @@ final class EnderInvSeeCommand extends BaseCommand{
 		}
 
 		if(!($sender instanceof Player)){
-			$sender->sendMessage(TextFormat::RED . "This command can only be used as a player.");
+			$sender->sendMessage(TextFormat::RED . "Nur In-Game!");
 			return true;
 		}
 
@@ -34,7 +34,7 @@ final class EnderInvSeeCommand extends BaseCommand{
 			!$sender->hasPermission("invsee.enderinventory.view") &&
 			(strtolower($args[0]) !== strtolower($sender->getName()) || !$sender->hasPermission("invsee.enderinventory.view.self"))
 		){
-			$sender->sendMessage(TextFormat::RED . "You don't have permission to view this inventory.");
+			$sender->sendMessage(TextFormat::RED . "Du bist dazu nicht berechtigt!");
 			return true;
 		}
 

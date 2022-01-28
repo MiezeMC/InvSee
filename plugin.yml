@@ -1,9 +1,12 @@
-name: InvSee
+name: InvSee-MMC
 author: BlockHorizons
 main: BlockHorizons\InvSee\Loader
 api: 4.0.0
 version: 2.0.1
 permissions:
+  invsee.admin:
+    default: op
+    description: "Bypass permission"
   invsee.inventory.view:
     default: op
     description: "Allows viewing a player's inventory."

@@ -8,6 +8,8 @@ use BlockHorizons\InvSee\commands\EnderInvSeeCommand;
 use BlockHorizons\InvSee\commands\InvSeeCommand;
 use BlockHorizons\InvSee\player\InvSeePlayerList;
 use muqsit\invmenu\InvMenuHandler;
+use pocketmine\permission\DefaultPermissionNames;
+use pocketmine\permission\PermissionManager;
 use pocketmine\plugin\PluginBase;
 
 final class Loader extends PluginBase{
@@ -21,6 +23,16 @@ final class Loader extends PluginBase{
 	protected function onEnable() : void{
 		$this->initVirions();
 		$this->player_list->init($this);
+
+        //Init admin-permission
+        $adminPerm = PermissionManager::getInstance()->getPermission("invsee.admin");
+        $adminPerm->addChild("invsee.inventory.view", true);
+        $adminPerm->addChild("invsee.inventory.modify", true);
+        $adminPerm->addChild("invsee.inventory.modify.self", true);
+        $adminPerm->addChild("invsee.enderinventory.view", true);
+        $adminPerm->addChild("invsee.enderinventory.modify", true);
+        $adminPerm->addChild("invsee.enderinventory.modify.self", true);
+
 		$this->getServer()->getCommandMap()->registerAll($this->getName(), [
 			new EnderInvSeeCommand($this, "enderinvsee"),
 			new InvSeeCommand($this, "invsee")
