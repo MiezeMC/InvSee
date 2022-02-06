@@ -8,7 +8,7 @@ permissions:
     default: op
     description: "Bypass permission"
   invsee.inventory.view:
-    default: op
+    default: true
     description: "Allows viewing a player's inventory."
   invsee.inventory.modify:
     default: op
@@ -17,7 +17,7 @@ permissions:
     default: true
     description: "Allows modifying your own inventory."
   invsee.enderinventory.view:
-    default: op
+    default: true
     description: "Allows viewing a player's ender inventory."
   invsee.enderinventory.modify:
     default: op
